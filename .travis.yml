@@ -18,6 +18,7 @@ env:
   
 
 before_install:
+  - phpenv config-rm xdebug.ini
   - if [[ "$SNIFF" == "1" ]]; then export PHPCS_DIR=/tmp/phpcs; fi
   - if [[ "$SNIFF" == "1" ]]; then export SNIFFS_DIR=/tmp/sniffs; fi
   # Install PHP_CodeSniffer.
@@ -41,6 +42,6 @@ script:
   # for example: `--standard=wpcs.xml`.
   # You can use any of the normal PHPCS command line arguments in the command:
   # https://github.com/squizlabs/PHP_CodeSniffer/wiki/Usage
-  - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/bin/phpcs -p . --standard=WordPress; fi
+  - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/bin/phpcs --ignore=*/wp-tests/*,*/tests/* -p . --standard=WordPress; fi
   
   - cd wp-tests/spec && bundle exec rspec test.rb
