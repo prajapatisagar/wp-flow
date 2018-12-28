@@ -44,3 +44,5 @@ script:
   - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/bin/phpcs --ignore=*/wp-tests/*,*/tests/* -p . --standard=WordPress; fi
   
   - cd wp-tests/spec && bundle exec rspec test.rb
+  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then bash ./travis/run_on_pull_requests; fi'
+  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bash ./travis/run_on_non_pull_requests; fi'
