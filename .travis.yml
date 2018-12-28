@@ -52,4 +52,5 @@ script:
   # https://github.com/squizlabs/PHP_CodeSniffer/wiki/Usage
   - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/bin/phpcs -p . --standard=WordPress; fi
 
+
   - cd wp-tests/spec && bundle exec rspec test.rb
