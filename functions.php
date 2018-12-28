@@ -1,6 +1,6 @@
 <?php
 /**
- * Function File123
+ * Function File
  *
  * @package WordPress
  */
