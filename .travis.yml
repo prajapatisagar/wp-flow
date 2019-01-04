@@ -32,8 +32,8 @@ before_install:
   # Install composer packages before trying to activate themes or plugins
   # - composer install
 
-  - git clone https://github.com/Seravo/wordpress-test-template wp-tests
-  - bash wp-tests/bin/install-wp-tests.sh test root '' localhost $WP_VERSION
+  #-- - git clone https://github.com/Seravo/wordpress-test-template wp-tests
+  #-- - bash wp-tests/bin/install-wp-tests.sh test root '' localhost $WP_VERSION
 
 script:
   # Run against WordPress Coding Standards.
@@ -43,5 +43,5 @@ script:
   # https://github.com/squizlabs/PHP_CodeSniffer/wiki/Usage
   - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/bin/phpcs --ignore=*/wp-tests/*,*/tests/* -p . --standard=WordPress $(git diff-tree --no-commit-id --name-only -r `git log --format="%H" -n 1` | grep .php); fi
   
-  - cd wp-tests/spec && bundle exec rspec test.rb
+  #-- - cd wp-tests/spec && bundle exec rspec test.rb
 
