@@ -1,7 +1,8 @@
 <?php
 /**
- * index File
+ * Index File
  *
  * @package WordPress
  */
+
 echo 'Hello World';
