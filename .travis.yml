@@ -44,6 +44,7 @@ script:
   # for example: `--standard=wpcs.xml`.
   # You can use any of the normal PHPCS command line arguments in the command:
   # https://github.com/squizlabs/PHP_CodeSniffer/wiki/Usage
+  - if [[ "$SNIFF" == "1" ]]; then git pull https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git $SNIFFS_DIR; fi
   - if [[ "$SNIFF" == "1" ]]; then $PHPCS_DIR/bin/phpcs --ignore=*/wp-tests/*,*/tests/* -p . --standard=WordPress $(git diff-tree --no-commit-id --name-only -r `git log --format="%H" -n 1` | grep .php) --runtime-set ignore_warnings_on_exit 1; fi
   
   #-- - cd wp-tests/spec && bundle exec rspec test.rb
